@@ -3,18 +3,23 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        message: 'Handling Get requests to /products'
+        message: 'Handling Get requests to /prices'
     });
 });
 
 router.post('/', (req, res, next) => {
+    const priceItem = {
+        name: req.body.name,
+        hours: req.body.hours
+    }
     res.status(200).json({
-        message: 'Handling Post requests to /products'
+        message: 'Handling Post requests to /prices',
+        createdPriceItem: priceItem
     });
 });
 
-router.get('/:productId',(req, res, next) => {
-    const id = req.params.productId;
+router.get('/:priceId',(req, res, next) => {
+    const id = req.params.priceId;
     if (id == 'special') {
         res.status(200).json({
             message: 'You discovered the special ID',
@@ -27,15 +32,15 @@ router.get('/:productId',(req, res, next) => {
     }
 });
 
-router.patch('/:productId',(req, res, next) => {
+router.patch('/:priceId',(req, res, next) => {
     res.status(200).json({
-        message:  'Updated product!'
+        message:  'Updated price!'
     });
 });
 
-router.delete('/:productId',(req, res, next) => {
+router.delete('/:priceId',(req, res, next) => {
     res.status(200).json({
-        message:  'Deleted product!'
+        message:  'Deleted price!'
     });
 });
 
